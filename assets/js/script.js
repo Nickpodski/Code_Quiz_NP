@@ -189,8 +189,8 @@ function sumbitInitials() {
     if (initials === "") {
       displayMessage("error", "Email cannot be blank").trim();
     } else {
-      localStorage.setItem("initials", initials);
-      localStorage.setItem("Score", score);
+      localStorage.setItem("initials", JSON.stringify(initials));
+      localStorage.setItem("score", JSON.stringify(score));
       goToHighScores();
     }
 }
