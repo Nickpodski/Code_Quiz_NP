@@ -16,7 +16,7 @@ var mainInfo = document.getElementById("main-info");
 var br = document.createElement("br");
 var hr = document.createElement("hr");
 var interval = 1000;
-var sumbitInitials = document.querySelector("#submit-initials");
+// var sumbitInitials = document.querySelector("#submit-initials");
 
 // question choices.
 var qOneChoices = ["1. strings", "2. booleans", "3. alerts", "4. numbers"];
@@ -43,7 +43,6 @@ function runGame(){
       qText.innerHTML = qTwo;
       answer = "1";
       createButtons(qTwoChoices, answer);
-      
     }
     if (qNumber === 3) {
       qText.innerHTML = qThree;
@@ -165,7 +164,7 @@ function goToAllDone(){
   aDiv.appendChild(fDiv);
   aDiv.appendChild(siButton);
   fDiv.appendChild(initialsForm);
-  sumbitInitialsF();
+  siButton.addEventListener("click", sumbitInitials);
   return;
 }
 
@@ -185,19 +184,15 @@ function goToHighScores() {
   window.location.replace('/Code_Quiz_NP/highscores.html');
 }
 
-function sumbitInitialsF() {
-  sumbitInitials.addEventListener("click", function (event) {
-    event.preventDefault();
-  
+function sumbitInitials() {
     var initials = document.querySelector("#inputInitials").value;
-  
     if (initials === "") {
       displayMessage("error", "Email cannot be blank").trim();
     } else {
       localStorage.setItem("initials", initials);
+      localStorage.setItem("Score", score);
       goToHighScores();
     }
-  });
 }
 
 startButton.addEventListener("click", startGame);
