@@ -3,6 +3,9 @@ var qOne = "Commonly used data types DO NOT Include:";
 var qTwo = "_____ JavaScript statements embedded in an HTML page can respond to user events such as mouse-clicks, form input, and page navigation.";
 var qThree = "What is the correct JavaScript syntax to write 'Hello World'?";
 var timerCount = 75;
+var done = false;
+var score;
+var timerText = document.getElementById("timer-text");
 var qNumber = 1;
 var qText = document.getElementById("question-text");
 var startButton = document.querySelector("#start-button");
@@ -18,6 +21,7 @@ var qThreeChoices = ["1. System.out.printIn('Hello World');", "2. printIn ('Hell
 function startGame() { 
   startButton.setAttribute("class", "d-none");
   quizInfo.setAttribute("class", "d-none");
+  startTimer();
   if (qNumber === 1) {
     qText.innerHTML = qOne;
     answer = "3";
@@ -53,7 +57,6 @@ function createButtons(arr, cAnswer) {
   isCorrect(cAnswer);
 }
 
-
 function isCorrect(c) {
   var qChoices = document.getElementById("question-choices");
   qChoices.addEventListener("click", function(event){
@@ -72,6 +75,19 @@ function nextQuestion() {
   document.getElementById("question-choices").remove();
   qNumber++;
   startGame();
+}
+
+function startTimer() {
+  timer = setInterval(() => {
+    timerCount--;
+    timerText.textContent = "Time:" + timerCount;
+    if (timerCount >= 0) {
+      score += timerCount;
+    }
+    if (timerCount === 0) {
+      score = 0;
+    }
+  }, 1000);
 }
 
 
