@@ -18,10 +18,10 @@ function init() {
     initials: newInitials,
     score: newScores
   };
-  if (player.initials !== null && player.score !== null) {
+  if (player.initials !== null) {
     storedPlayers.push(player.initials,player.score);
   }
-  if (oldPlayers === null && storedPlayers === null) {
+  if (oldPlayers === null) {
     localStorage.setItem("oldPlayers", JSON.stringify(storedPlayers));
   } else if (oldPlayers !== null) {
       oldPlayers = JSON.parse(localStorage.getItem("oldPlayers"));
