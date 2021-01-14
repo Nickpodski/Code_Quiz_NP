@@ -6,7 +6,6 @@ var storedPlayers = [];
 var oldPlayers = JSON.parse(localStorage.getItem("oldPlayers"));
 
 function init() {
-
   var newInitials = JSON.parse(localStorage.getItem("initials"));
   var newScores = JSON.parse(localStorage.getItem("score"));
   if (newInitials !== null) {
@@ -37,7 +36,6 @@ function init() {
   }
 }
 
-
 function renderHighScore(arr) {
   for (var i = 0; i < arr.length; i += 2) {
     var hsText = arr[i] + " - " + arr[i+1];
@@ -63,9 +61,6 @@ function goBackF() {
   window.location.replace('/Code_Quiz_NP/index.html');
 }
 
-
 clearHS.addEventListener("click", clearHSF);
-
 goBack.addEventListener("click", goBackF);
-
 init();
