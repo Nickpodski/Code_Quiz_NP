@@ -6,6 +6,7 @@ var storedPlayers = [];
 var oldPlayers = JSON.parse(localStorage.getItem("oldPlayers"));
 
 function init() {
+
   var newInitials = JSON.parse(localStorage.getItem("initials"));
   var newScores = JSON.parse(localStorage.getItem("score"));
   if (newInitials !== null) {
@@ -21,7 +22,7 @@ function init() {
   if (player.initials !== null && player.score !== null) {
     storedPlayers.push(player.initials,player.score);
   }
-  if (oldPlayers === null) {
+  if (oldPlayers === null && storedPlayers === null) {
     localStorage.setItem("oldPlayers", JSON.stringify(storedPlayers));
   } else if (oldPlayers !== null) {
       oldPlayers = JSON.parse(localStorage.getItem("oldPlayers"));
