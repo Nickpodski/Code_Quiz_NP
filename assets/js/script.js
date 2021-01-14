@@ -96,7 +96,6 @@ function isCorrect(c,cDiv) {
 }
 
 function nextQuestion() {
-  // removeElementsByClass("button-answers");
   document.getElementById("question-choices").remove();
   if (qNumber === 5){
     done = true;
@@ -139,7 +138,7 @@ function goToAllDone(){
   quizInfo.className = quizInfo.className.replace(/\bd-none\b/g, "")
   var a = document.getElementById("question-choices")
   if (a) {
-    document.getElementById("question-choices").remove();
+    a.remove();
   }
   var aDiv = document.createElement("div");
   aDiv.setAttribute("class", "mb-3 row");
