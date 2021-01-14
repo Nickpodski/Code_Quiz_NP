@@ -8,10 +8,10 @@ var oldPlayers = JSON.parse(localStorage.getItem("oldPlayers"));
 function init() {
   var newInitials = JSON.parse(localStorage.getItem("initials"));
   var newScores = JSON.parse(localStorage.getItem("score"));
-  if (newInitials !== null) {
+  localStorage.removeItem('initials');
+  localStorage.removeItem('score');
+  if (newInitials !== null && newScores !== null) {
     initials = newInitials;
-  }
-  if (newScores !== null) {
     score = newScores;
   }
   var player = {
@@ -21,9 +21,7 @@ function init() {
   if (player.initials !== null) {
     storedPlayers.push(player.initials,player.score);
   }
-  if (oldPlayers === null) {
-    localStorage.setItem("oldPlayers", JSON.stringify(storedPlayers));
-  } else if (oldPlayers !== null) {
+ if (oldPlayers !== null) {
       oldPlayers = JSON.parse(localStorage.getItem("oldPlayers"));
     for (var i = 0; i < oldPlayers.length; i++) {
       storedPlayers.push(oldPlayers[i]);
@@ -33,6 +31,8 @@ function init() {
   }                    
   if (storedPlayers !== null) {
     renderHighScore(storedPlayers);
+    localStorage.removeItem('oldPlayers');
+    localStorage.setItem('oldPlayers', JSON.stringify(storedPlayers))
   }
 }
 
